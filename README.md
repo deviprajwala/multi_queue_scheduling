@@ -7,4 +7,4 @@ In this program we maintain 3 queues for the execution of the processes,each wit
 quantum,second one is of 16 quantum and third one is of more than 16 quantum.
 
 We calculate a 'value' which is the average of time and priority for each of the process.At the time of execution of the processes in the 
-queue ,we sort the value in ascending order and execute the processes in the queue.This procedure is repeated for each of the queue.
+queue ,we sort the 'value' of each process in ascending order and execute the processes in the queue.This procedure is repeated for each of the queue.
