@@ -177,6 +177,7 @@ void diplay(char queue[queue_size],int in,int out)
 int execution(process head,int in,int v[5],int limit)
 {
  int n,va,incremented=0;
+ char pname[5];
  n=in;
  process cur;
  cur=head->link;
@@ -205,23 +206,24 @@ int execution(process head,int in,int v[5],int limit)
       {
         printf("-");
       }
+      printf("\n");
       if(cur->actual_execution_time>limit) //if the execution time is more than the actual time then we insert the process at the end of the next queue
       {
         incremented++;
-        cur->actual_execution_time-=8;
-        cur->estimated_execution_time-=8;
+        cur->estimated_execution_time-=limit;
+        cur->actual_execution_time=cur->estimated_execution_time;
         va=(cur->actual_execution_time+cur->priority)/2;
         cur->value=va;
+        strcpy(pname,cur->name);
         if(limit==8)         
         {
-          qu_excee(head2,queue_2[queue_size],v2[5],cur->actual_execution_time,cur->estimated_execution_time,cur->value,cur->name,cur->priority,cur->id);//to insert the process at the end of next queue
+          qu_excee(head2,queue_2[queue_size],v2[5],cur->actual_execution_time,cur->estimated_execution_time,cur->value,pname,cur->priority,cur->id);//to insert the process at the end of next queue
         }
         else if(limit==16)
         {
-          qu_excee(head3,queue_3[queue_size],v3[5],cur->actual_execution_time,cur->estimated_execution_time,cur->value,cur->name,cur->priority,cur->id);//to insert the process at the end of next queue
+          qu_excee(head3,queue_3[queue_size],v3[5],cur->actual_execution_time,cur->estimated_execution_time,cur->value,pname,cur->priority,cur->id);//to insert the process at the end of next queue
         }
       } 
-      printf(" ");
     }
    cur=cur->link;
   }
@@ -231,7 +233,7 @@ int execution(process head,int in,int v[5],int limit)
  return incremented;//the number of processes which are inserted into the next queue is returned
 }
 
-void qu_excee(process head,int queue[queue_size],int v[5],int a,int b,float c,char name,int d,int e)
+void qu_excee(process head,int queue[queue_size],int v[5],int a,int b,float c,char name[],int d,int e)
 {
  int i;
  process temp,cur,prev;
@@ -282,10 +284,13 @@ int main()
  diplay(queue_3,in_3,out_3);
  printf("queue3 is completed\n");
  printf("\n_______________________________EXECUTION_______________________________\n");
+ printf("\nExecution of queue1\n");
  incremented=execution(head1,in_1,v1,8);
- in_2=incremented;
+ printf("\nExecution of queue2\n");
+ in_2+=incremented;
  incremented=execution(head2,in_2,v2,16);
- in_3=incremented;
+ printf("\nExecution of queue3\n");
+ in_3+=incremented;
  incremented=execution(head3,in_3,v3,100);
  return 0;
 }
