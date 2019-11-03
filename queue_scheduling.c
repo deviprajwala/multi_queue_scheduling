@@ -214,14 +214,13 @@ int execution(process head,int in,int v[5],int limit)
         cur->actual_execution_time=cur->estimated_execution_time;
         va=(cur->actual_execution_time+cur->priority)/2;
         cur->value=va;
-        strcpy(pname,cur->name);
         if(limit==8)         
         {
-          qu_excee(head2,queue_2[queue_size],v2[5],cur->actual_execution_time,cur->estimated_execution_time,cur->value,pname,cur->priority,cur->id);//to insert the process at the end of next queue
+          qu_exceed(head2,queue_2[queue_size],v2[5],cur);//to insert the process at the end of next queue
         }
         else if(limit==16)
         {
-          qu_excee(head3,queue_3[queue_size],v3[5],cur->actual_execution_time,cur->estimated_execution_time,cur->value,pname,cur->priority,cur->id);//to insert the process at the end of next queue
+          qu_exceed(head3,queue_3[queue_size],v3[5],cur);//to insert the process at the end of next queue
         }
       } 
     }
@@ -233,17 +232,17 @@ int execution(process head,int in,int v[5],int limit)
  return incremented;//the number of processes which are inserted into the next queue is returned
 }
 
-void qu_excee(process head,int queue[queue_size],int v[5],int a,int b,float c,char name[],int d,int e)
+void qu_exceed(process head,int queue[queue_size],int v[5],process x)
 {
  int i;
  process temp,cur,prev;
  temp=get_process();
-     //strcpy(temp->name,name);
-     temp->id=e;
-     temp->estimated_execution_time=b;
-     temp->actual_execution_time=a;
-     temp->priority=d;
-     temp->value=c;
+     strcpy(temp->name,x->name);
+     temp->id=x->id;
+     temp->estimated_execution_time=x->estimated_execution_time;
+     temp->actual_execution_time=x->actual_execution_time;
+     temp->priority=x->priority;
+     temp->value= x->value;
      for(i=0;i<5;i++)
      {
       if(v[i]==0)

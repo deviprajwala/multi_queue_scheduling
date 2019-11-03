@@ -224,7 +224,6 @@ int execution(process head,int in,int v[5],int limit)
           qu_excee(head3,queue_3[queue_size],v3[5],cur->actual_execution_time,cur->estimated_execution_time,cur->value,pname,cur->priority,cur->id);//to insert the process at the end of next queue
         }
       } 
-      printf(" ");
     }
    cur=cur->link;
   }
