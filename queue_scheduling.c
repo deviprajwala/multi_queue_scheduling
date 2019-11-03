@@ -32,6 +32,8 @@ void calculation(process head,int n);
 void display_list(process head);
 int insert_to_queue(char queue[queue_size],process head,int in,int greater,int less,process head_new,int v[5]);
 void diplay(char queue[queue_size],int in,int out);
+int execution(process head,int in,int v[5],int limit);
+void qu_exceed(process head,int queue[queue_size],int v[5],process x);
 
 process get_process()
 {
@@ -260,6 +262,7 @@ void qu_exceed(process head,int queue[queue_size],int v[5],process x)
      }
      prev->link=temp;
 }
+
 int main()
 {
  int n,in_1=0,out_1=0,in_2=0,out_2=0,in_3=0,out_3=0,incremented;
@@ -291,6 +294,7 @@ int main()
  printf("\nExecution of queue3\n");
  in_3+=incremented;
  incremented=execution(head3,in_3,v3,100);
+
  return 0;
 }
 
