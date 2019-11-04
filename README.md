@@ -1,6 +1,6 @@
 # multi_queue_scheduling
 
-The main objective of the program is to schedule the process in an effecient way.Here we considering two factors in scheduling process that 
+The main objective of the program is to schedule the process in an effecient way.Here we are considering two factors in scheduling process that 
 is priority and execution time.
 
 In this program we maintain 3 queues for the execution of the processes,each with different quantum.In this program the first queue is of 8 
